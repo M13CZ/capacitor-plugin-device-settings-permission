@@ -1,0 +1,106 @@
+{
+  "api": {
+    "name": "DeviceSettingsPermissionPlugin",
+    "slug": "devicesettingspermissionplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "requestNotificationPermission",
+        "signature": "() => Promise<{ permission: NotificationPermissions; }>",
+        "parameters": [],
+        "returns": "Promise<{ permission: NotificationPermissions; }>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          },
+          {
+            "name": "returns",
+            "text": "A promise that resolves with the current permission status."
+          },
+          {
+            "name": "example",
+            "text": "```typescript\nconst { permission } = await DeviceSettingsPermission.requestNotificationPermission();\nif (permission === 'granted') {\n // Notifications can be shown\n} else {\n // Notifications cannot be shown\n}"
+          }
+        ],
+        "docs": "Request permission to show notifications.",
+        "complexTypes": [
+          "NotificationPermissions"
+        ],
+        "slug": "requestnotificationpermission"
+      },
+      {
+        "name": "openAppSettings",
+        "signature": "(type: AppSettingsType) => Promise<void>",
+        "parameters": [
+          {
+            "name": "type",
+            "docs": "The type of settings to open.",
+            "type": "AppSettingsType"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          },
+          {
+            "name": "param",
+            "text": "type The type of settings to open."
+          },
+          {
+            "name": "returns",
+            "text": "A promise that resolves once the settings are opened."
+          },
+          {
+            "name": "example",
+            "text": "```typescript\nawait DeviceSettingsPermission.openAppSettings('notification');\n```"
+          }
+        ],
+        "docs": "Open the app settings for the app.",
+        "complexTypes": [
+          "AppSettingsType"
+        ],
+        "slug": "openappsettings"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [],
+  "enums": [
+    {
+      "name": "NotificationPermissions",
+      "slug": "notificationpermissions",
+      "members": [
+        {
+          "name": "GRANTED",
+          "value": "'granted'",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "DENIED",
+          "value": "'denied'",
+          "tags": [],
+          "docs": ""
+        }
+      ]
+    },
+    {
+      "name": "AppSettingsType",
+      "slug": "appsettingstype",
+      "members": [
+        {
+          "name": "NOTIFICATION",
+          "value": "'notification'",
+          "tags": [],
+          "docs": ""
+        }
+      ]
+    }
+  ],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
