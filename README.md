@@ -13,25 +13,62 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`requestNotificationPermission()`](#requestnotificationpermission)
+* [`openAppSettings(...)`](#openappsettings)
+* [Enums](#enums)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### requestNotificationPermission()
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+requestNotificationPermission() => Promise<{ permission: NotificationPermissions; }>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+Request permission to show notifications.
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+**Returns:** <code>Promise&lt;{ permission: <a href="#notificationpermissions">NotificationPermissions</a>; }&gt;</code>
+
+**Since:** 1.0.0
 
 --------------------
+
+
+### openAppSettings(...)
+
+```typescript
+openAppSettings(type: AppSettingsType) => Promise<void>
+```
+
+Open the app settings for the app.
+
+| Param      | Type                                                        | Description                   |
+| ---------- | ----------------------------------------------------------- | ----------------------------- |
+| **`type`** | <code><a href="#appsettingstype">AppSettingsType</a></code> | The type of settings to open. |
+
+**Since:** 1.0.0
+
+--------------------
+
+
+### Enums
+
+
+#### NotificationPermissions
+
+| Members       | Value                  |
+| ------------- | ---------------------- |
+| **`GRANTED`** | <code>'granted'</code> |
+| **`DENIED`**  | <code>'denied'</code>  |
+
+
+#### AppSettingsType
+
+| Members            | Value                       |
+| ------------------ | --------------------------- |
+| **`NOTIFICATION`** | <code>'notification'</code> |
 
 </docgen-api>
