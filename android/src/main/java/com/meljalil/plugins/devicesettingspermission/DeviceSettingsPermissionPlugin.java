@@ -1,9 +1,8 @@
 package com.meljalil.plugins.devicesettingspermission;
 
-import static com.meljalil.plugins.devicesettingspermission.DeviceSettingsPermission.PUSH_NOTIFICATIONS;
+import static com.meljalil.plugins.devicesettingspermission.NotificationPermission.PUSH_NOTIFICATIONS;
 
 import android.Manifest;
-
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -14,16 +13,17 @@ import com.getcapacitor.annotation.PermissionCallback;
 
 @CapacitorPlugin(
     name = "DeviceSettingsPermission",
-    permissions = @Permission(strings = {Manifest.permission.POST_NOTIFICATIONS}, alias = PUSH_NOTIFICATIONS)
+    permissions = @Permission(strings = { Manifest.permission.POST_NOTIFICATIONS }, alias = PUSH_NOTIFICATIONS)
 )
 public class DeviceSettingsPermissionPlugin extends Plugin {
-    private final DeviceSettingsPermission implementation = new DeviceSettingsPermission();
+
+    private final NotificationPermission notificationPermission = new NotificationPermission();
 
     @PluginMethod
     public void requestNotificationPermission(PluginCall call) {
-        if (implementation.checkSDKVersionOrPermissionGranted(this)) {
+        if (notificationPermission.checkSDKVersionOrPermissionGranted(this)) {
             JSObject permissionsResultJSON = new JSObject();
-            permissionsResultJSON.put("permission", implementation.getNotificationPermissionText(getContext()));
+            permissionsResultJSON.put("value", notificationPermission.getNotificationPermissionText(getContext()));
             call.resolve(permissionsResultJSON);
         } else {
             requestPermissionForAlias(PUSH_NOTIFICATIONS, call, "permissionsCallback");
@@ -33,7 +33,7 @@ public class DeviceSettingsPermissionPlugin extends Plugin {
     @PermissionCallback
     private void permissionsCallback(PluginCall call) {
         JSObject permissionsResultJSON = new JSObject();
-        permissionsResultJSON.put("display", implementation.getNotificationPermissionText(getContext()));
+        permissionsResultJSON.put("value", notificationPermission.getNotificationPermissionText(getContext()));
         call.resolve(permissionsResultJSON);
     }
 }

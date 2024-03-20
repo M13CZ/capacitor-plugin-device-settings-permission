@@ -9,7 +9,7 @@ import androidx.core.app.NotificationManagerCompat;
 import com.getcapacitor.PermissionState;
 import com.getcapacitor.Plugin;
 
-public class DeviceSettingsPermission {
+public class NotificationPermission {
 
     static final String PUSH_NOTIFICATIONS = "notifications";
 
