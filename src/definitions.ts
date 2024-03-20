@@ -1,3 +1,15 @@
 export interface DeviceSettingsPermissionPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  requestNotificationPermission(): Promise<{
+    permission: NotificationPermissions;
+  }>;
+  openAppSettings(type: AppSettingsType): Promise<void>;
+}
+
+export enum NotificationPermissions {
+  GRANTED = 'granted',
+  DENIED = 'denied',
+}
+
+export enum AppSettingsType {
+  NOTIFICATION = 'notification',
 }
