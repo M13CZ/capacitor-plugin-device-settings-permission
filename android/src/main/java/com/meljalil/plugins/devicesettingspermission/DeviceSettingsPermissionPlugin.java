@@ -4,7 +4,6 @@ import static com.meljalil.plugins.devicesettingspermission.NotificationPermissi
 
 import android.Manifest;
 import android.content.Intent;
-
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -30,6 +29,13 @@ public class DeviceSettingsPermissionPlugin extends Plugin {
         } else {
             requestPermissionForAlias(PUSH_NOTIFICATIONS, call, "permissionsCallback");
         }
+    }
+
+    @PluginMethod
+    public void getNotificationPermission(PluginCall call) {
+        JSObject permissionsResultJSON = new JSObject();
+        permissionsResultJSON.put("value", notificationPermission.getNotificationPermissionText(getContext()));
+        call.resolve(permissionsResultJSON);
     }
 
     @PermissionCallback
