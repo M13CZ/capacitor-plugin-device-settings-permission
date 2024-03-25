@@ -36,4 +36,6 @@ export enum NotificationPermissions {
 
 export enum AppSettingsType {
   NOTIFICATION = 'notification',
+  LOCATION = 'location',
+  OTHERS = 'others',
 }
