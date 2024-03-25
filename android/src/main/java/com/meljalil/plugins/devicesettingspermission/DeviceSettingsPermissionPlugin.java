@@ -3,6 +3,8 @@ package com.meljalil.plugins.devicesettingspermission;
 import static com.meljalil.plugins.devicesettingspermission.NotificationPermission.PUSH_NOTIFICATIONS;
 
 import android.Manifest;
+import android.content.Intent;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -35,5 +37,25 @@ public class DeviceSettingsPermissionPlugin extends Plugin {
         JSObject permissionsResultJSON = new JSObject();
         permissionsResultJSON.put("value", notificationPermission.getNotificationPermissionText(getContext()));
         call.resolve(permissionsResultJSON);
+    }
+
+    @PluginMethod
+    public void openSettings(PluginCall call) {
+        final String packageName = getContext().getPackageName();
+        final String settingName = call.getString("settingName");
+
+        if (settingName == null || settingName.isEmpty()) {
+            call.reject("Invalid settingName");
+        }
+
+        String settingAction = NativeSettings.getSettingAction(settingName);
+
+        Intent intent = new Intent(settingAction);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setPackage(packageName);
+
+        getContext().startActivity(intent);
+
+        call.resolve();
     }
 }
