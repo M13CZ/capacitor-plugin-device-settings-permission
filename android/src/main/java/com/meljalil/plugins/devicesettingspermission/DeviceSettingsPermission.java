@@ -45,7 +45,9 @@ import static android.provider.Settings.ACTION_WIFI_IP_SETTINGS;
 import static android.provider.Settings.ACTION_WIFI_SETTINGS;
 import static android.provider.Settings.ACTION_WIRELESS_SETTINGS;
 
-public class NativeSettings {
+public class DeviceSettingsPermission {
+
+    static final String PUSH_NOTIFICATIONS = "notifications";
 
     public static String getSettingAction(String settingName) {
         switch (settingName) {
@@ -57,5 +59,24 @@ public class NativeSettings {
                 return ACTION_APPLICATION_SETTINGS;
         }
         return ACTION_SETTINGS;
+    }
+
+    public boolean checkSDKVersionOrPermissionGranted(Plugin plugin) {
+        return (
+            Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || plugin.getPermissionState(PUSH_NOTIFICATIONS) == PermissionState.GRANTED
+        );
+    }
+
+    public String getNotificationPermissionText(Context context) {
+        if (areNotificationsEnabled(context)) {
+            return "granted";
+        } else {
+            return "denied";
+        }
+    }
+
+    private boolean areNotificationsEnabled(Context context) {
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        return notificationManager.areNotificationsEnabled();
     }
 }

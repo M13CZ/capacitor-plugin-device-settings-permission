@@ -1,6 +1,6 @@
 package com.meljalil.plugins.devicesettingspermission;
 
-import static com.meljalil.plugins.devicesettingspermission.NotificationPermission.PUSH_NOTIFICATIONS;
+import static com.meljalil.plugins.devicesettingspermission.DeviceSettingsPermission.PUSH_NOTIFICATIONS;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,13 +18,13 @@ import com.getcapacitor.annotation.PermissionCallback;
 )
 public class DeviceSettingsPermissionPlugin extends Plugin {
 
-    private final NotificationPermission notificationPermission = new NotificationPermission();
+    private final NotificationPermission implementation = new NotificationPermission();
 
     @PluginMethod
     public void requestNotificationPermission(PluginCall call) {
-        if (notificationPermission.checkSDKVersionOrPermissionGranted(this)) {
+        if (implementation.checkSDKVersionOrPermissionGranted(this)) {
             JSObject permissionsResultJSON = new JSObject();
-            permissionsResultJSON.put("value", notificationPermission.getNotificationPermissionText(getContext()));
+            permissionsResultJSON.put("value", implementation.getNotificationPermissionText(getContext()));
             call.resolve(permissionsResultJSON);
         } else {
             requestPermissionForAlias(PUSH_NOTIFICATIONS, call, "permissionsCallback");
@@ -34,14 +34,14 @@ public class DeviceSettingsPermissionPlugin extends Plugin {
     @PluginMethod
     public void getNotificationPermission(PluginCall call) {
         JSObject permissionsResultJSON = new JSObject();
-        permissionsResultJSON.put("value", notificationPermission.getNotificationPermissionText(getContext()));
+        permissionsResultJSON.put("value", implementation.getNotificationPermissionText(getContext()));
         call.resolve(permissionsResultJSON);
     }
 
     @PermissionCallback
     private void permissionsCallback(PluginCall call) {
         JSObject permissionsResultJSON = new JSObject();
-        permissionsResultJSON.put("value", notificationPermission.getNotificationPermissionText(getContext()));
+        permissionsResultJSON.put("value", implementation.getNotificationPermissionText(getContext()));
         call.resolve(permissionsResultJSON);
     }
 
@@ -54,7 +54,7 @@ public class DeviceSettingsPermissionPlugin extends Plugin {
             call.reject("Invalid settingName");
         }
 
-        String settingAction = NativeSettings.getSettingAction(settingName);
+        String settingAction = implementation.getSettingAction(settingName);
 
         Intent intent = new Intent(settingAction);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
