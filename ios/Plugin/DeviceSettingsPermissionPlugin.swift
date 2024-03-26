@@ -1,18 +1,28 @@
 import Foundation
 import Capacitor
+import UserNotifications
 
-/**
- * Please read the Capacitor iOS Plugin Development Guide
- * here: https://capacitorjs.com/docs/plugins/ios
- */
 @objc(DeviceSettingsPermissionPlugin)
 public class DeviceSettingsPermissionPlugin: CAPPlugin {
     private let implementation = DeviceSettingsPermission()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
+    @objc func requestNotificationPermission(_ call: CAPPluginCall) {
+        let result = implementation.requestNotificationPermission()
+        call.resolve(["value": result])
+    }
+
+    @objc func getNotificationPermission(_ call: CAPPluginCall) {
+        let result = implementation.getNotificationPermission()
+        call.resolve(["value": result])
+    }
+
+    @objc func openSettings(_ call: CAPPluginCall) {
+        let settingName = call.getString("settingName") ?? ""
+        if settingName.isEmpty {
+            call.reject("Invalid settingName")
+        } else {
+            let result = implementation.openSettings(settingName: settingName)
+            call.resolve(["result": result])
+        }
     }
 }

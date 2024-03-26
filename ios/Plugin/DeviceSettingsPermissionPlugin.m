@@ -4,5 +4,8 @@
 // Define the plugin using the CAP_PLUGIN Macro, and
 // each method the plugin supports using the CAP_PLUGIN_METHOD macro.
 CAP_PLUGIN(DeviceSettingsPermissionPlugin, "DeviceSettingsPermission",
-           CAP_PLUGIN_METHOD(echo, CAPPluginReturnPromise);
+          CAP_PLUGIN_METHOD(openAppSettings, CAPPluginReturnPromise);
+          CAP_PLUGIN_METHOD(getNotificationPermission, CAPPluginReturnPromise);
+          CAP_PLUGIN_METHOD(requestNotificationPermission, CAPPluginReturnPromise);
+
 )
