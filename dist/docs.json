@@ -31,6 +31,31 @@
         "slug": "requestnotificationpermission"
       },
       {
+        "name": "getNotificationPermission",
+        "signature": "() => Promise<{ permission: NotificationPermissions; }>",
+        "parameters": [],
+        "returns": "Promise<{ permission: NotificationPermissions; }>",
+        "tags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          },
+          {
+            "name": "returns",
+            "text": "A promise that resolves with the current permission status."
+          },
+          {
+            "name": "example",
+            "text": "```typescript\nconst { permission } = await DeviceSettingsPermission.getNotificationPermission();\nif (permission === 'granted') {\n // Notifications can be shown\n} else {\n // Notifications cannot be shown\n}"
+          }
+        ],
+        "docs": "Check the current notification permission status.",
+        "complexTypes": [
+          "NotificationPermissions"
+        ],
+        "slug": "getnotificationpermission"
+      },
+      {
         "name": "openAppSettings",
         "signature": "(type: AppSettingsType) => Promise<void>",
         "parameters": [

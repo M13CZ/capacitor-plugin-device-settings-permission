@@ -16,6 +16,22 @@ export interface DeviceSettingsPermissionPlugin {
         permission: NotificationPermissions;
     }>;
     /**
+     * Check the current notification permission status.
+     * @since 1.0.0
+     * @returns A promise that resolves with the current permission status.
+     * @example
+     * ```typescript
+     * const { permission } = await DeviceSettingsPermission.getNotificationPermission();
+     * if (permission === 'granted') {
+     *  // Notifications can be shown
+     * } else {
+     *  // Notifications cannot be shown
+     * }
+     */
+    getNotificationPermission(): Promise<{
+        permission: NotificationPermissions;
+    }>;
+    /**
      * Open the app settings for the app.
      * @since 1.0.0
      * @param type The type of settings to open.

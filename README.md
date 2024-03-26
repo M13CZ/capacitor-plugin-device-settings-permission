@@ -14,6 +14,7 @@ npx cap sync
 <docgen-index>
 
 * [`requestNotificationPermission()`](#requestnotificationpermission)
+* [`getNotificationPermission()`](#getnotificationpermission)
 * [`openAppSettings(...)`](#openappsettings)
 * [Enums](#enums)
 
@@ -29,6 +30,21 @@ requestNotificationPermission() => Promise<{ permission: NotificationPermissions
 ```
 
 Request permission to show notifications.
+
+**Returns:** <code>Promise&lt;{ permission: <a href="#notificationpermissions">NotificationPermissions</a>; }&gt;</code>
+
+**Since:** 1.0.0
+
+--------------------
+
+
+### getNotificationPermission()
+
+```typescript
+getNotificationPermission() => Promise<{ permission: NotificationPermissions; }>
+```
+
+Check the current notification permission status.
 
 **Returns:** <code>Promise&lt;{ permission: <a href="#notificationpermissions">NotificationPermissions</a>; }&gt;</code>
 
