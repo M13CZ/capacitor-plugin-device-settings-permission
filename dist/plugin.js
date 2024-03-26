@@ -9,6 +9,9 @@ var capacitorDeviceSettingsPermission = (function (exports, core) {
     exports.AppSettingsType = void 0;
     (function (AppSettingsType) {
         AppSettingsType["NOTIFICATION"] = "notification";
+        AppSettingsType["LOCATION"] = "location";
+        AppSettingsType["TRACING"] = "tracing";
+        AppSettingsType["GENERAL"] = "general";
     })(exports.AppSettingsType || (exports.AppSettingsType = {}));
 
     const DeviceSettingsPermission = core.registerPlugin('DeviceSettingsPermission');

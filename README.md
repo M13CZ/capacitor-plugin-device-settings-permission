@@ -70,5 +70,8 @@ Open the app settings for the app.
 | Members            | Value                       |
 | ------------------ | --------------------------- |
 | **`NOTIFICATION`** | <code>'notification'</code> |
+| **`LOCATION`**     | <code>'location'</code>     |
+| **`TRACING`**      | <code>'tracing'</code>      |
+| **`GENERAL`**      | <code>'general'</code>      |
 
 </docgen-api>

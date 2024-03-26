@@ -97,6 +97,24 @@
           "value": "'notification'",
           "tags": [],
           "docs": ""
+        },
+        {
+          "name": "LOCATION",
+          "value": "'location'",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "TRACING",
+          "value": "'tracing'",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "GENERAL",
+          "value": "'general'",
+          "tags": [],
+          "docs": ""
         }
       ]
     }

@@ -32,5 +32,8 @@ export declare enum NotificationPermissions {
     DENIED = "denied"
 }
 export declare enum AppSettingsType {
-    NOTIFICATION = "notification"
+    NOTIFICATION = "notification",
+    LOCATION = "location",
+    TRACING = "tracing",
+    GENERAL = "general"
 }
