@@ -2,13 +2,23 @@ package com.meljalil.plugins.devicesettingspermission;
 
 import static android.provider.Settings.ACTION_APPLICATION_SETTINGS;
 import static android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS;
-import static android.provider.Settings.ACTION_LOCALE_SETTINGS;
+import static android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS;
+import static android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS;
+import static android.provider.Settings.ACTION_SETTINGS;
+
+import android.content.Context;
+import android.os.Build;
+
+import androidx.core.app.NotificationManagerCompat;
+
+import com.getcapacitor.PermissionState;
+import com.getcapacitor.Plugin;
 
 public class DeviceSettingsPermission {
 
     static final String PUSH_NOTIFICATIONS = "notifications";
 
-    public static String getSettingAction(String settingName) {
+    public String getSettingAction(String settingName) {
         switch (settingName) {
             case "notification":
                 return ACTION_APP_NOTIFICATION_SETTINGS;

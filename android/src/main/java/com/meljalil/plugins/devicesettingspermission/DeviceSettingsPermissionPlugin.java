@@ -18,7 +18,7 @@ import com.getcapacitor.annotation.PermissionCallback;
 )
 public class DeviceSettingsPermissionPlugin extends Plugin {
 
-    private final NotificationPermission implementation = new NotificationPermission();
+    private final DeviceSettingsPermission implementation = new DeviceSettingsPermission();
 
     @PluginMethod
     public void requestNotificationPermission(PluginCall call) {
@@ -54,6 +54,7 @@ public class DeviceSettingsPermissionPlugin extends Plugin {
             call.reject("Invalid settingName");
         }
 
+        assert settingName != null;
         String settingAction = implementation.getSettingAction(settingName);
 
         Intent intent = new Intent(settingAction);
