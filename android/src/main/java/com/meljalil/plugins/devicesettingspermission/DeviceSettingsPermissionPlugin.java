@@ -24,7 +24,7 @@ public class DeviceSettingsPermissionPlugin extends Plugin {
     public void requestNotificationPermission(PluginCall call) {
         if (implementation.checkSDKVersionOrPermissionGranted(this)) {
             JSObject permissionsResultJSON = new JSObject();
-            permissionsResultJSON.put("value", implementation.getNotificationPermissionText(getContext()));
+            permissionsResultJSON.put("permission", implementation.getNotificationPermissionText(getContext()));
             call.resolve(permissionsResultJSON);
         } else {
             requestPermissionForAlias(PUSH_NOTIFICATIONS, call, "permissionsCallback");
@@ -34,14 +34,14 @@ public class DeviceSettingsPermissionPlugin extends Plugin {
     @PluginMethod
     public void getNotificationPermission(PluginCall call) {
         JSObject permissionsResultJSON = new JSObject();
-        permissionsResultJSON.put("value", implementation.getNotificationPermissionText(getContext()));
+        permissionsResultJSON.put("permission", implementation.getNotificationPermissionText(getContext()));
         call.resolve(permissionsResultJSON);
     }
 
     @PermissionCallback
     private void permissionsCallback(PluginCall call) {
         JSObject permissionsResultJSON = new JSObject();
-        permissionsResultJSON.put("value", implementation.getNotificationPermissionText(getContext()));
+        permissionsResultJSON.put("permission", implementation.getNotificationPermissionText(getContext()));
         call.resolve(permissionsResultJSON);
     }
 

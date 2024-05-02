@@ -8,12 +8,12 @@ public class DeviceSettingsPermissionPlugin: CAPPlugin {
 
     @objc func requestNotificationPermission(_ call: CAPPluginCall) {
         let result = implementation.requestNotificationPermission()
-        call.resolve(["value": result])
+        call.resolve(["permission": result])
     }
 
     @objc func getNotificationPermission(_ call: CAPPluginCall) {
         let result = implementation.getNotificationPermission()
-        call.resolve(["value": result])
+        call.resolve(["permission": result])
     }
 
     @objc func openSettings(_ call: CAPPluginCall) {
