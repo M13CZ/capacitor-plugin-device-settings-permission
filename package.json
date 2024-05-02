@@ -1,6 +1,6 @@
 {
   "name": "capacitor-plugin-device-settings-permission",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "DeviceSettingsPermission is a Capacitor plugin designed to streamline the process of requesting permissions and accessing device settings. It provides a unified API to request and check permissions across different platforms, and offers a simple way to direct users to their device's settings page. This plugin is intended to enhance user experience by making permission management more efficient and user-friendly.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
