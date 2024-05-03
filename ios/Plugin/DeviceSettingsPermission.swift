@@ -2,7 +2,7 @@ import Foundation
 import UserNotifications
 import UIKit
 
-@objc(DeviceSettingsPermissionPlugin) public class DeviceSettingsPermission: NSObject {
+@objc(DeviceSettingsPermission) public class DeviceSettingsPermission: NSObject {
 
     let settingsPaths = [
         "general": "App-prefs:General",
